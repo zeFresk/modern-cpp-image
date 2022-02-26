@@ -3,7 +3,7 @@
 FROM alpine:3.15.3
 
 # Compilation
-RUN apk -U add make clang cmake autoconf ruby lcov doxygen tree
+RUN apk -U add make clang cmake autoconf ruby lcov doxygen tree gcc afl
 
 #RUN pip install lcov_cobertura
 
