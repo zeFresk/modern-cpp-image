@@ -10,6 +10,4 @@ RUN gem install --no-user-install asciidoctor asciidoctor-pdf
 
 COPY xorg.conf /etc/X11/xorg.conf
 
-ENV DISPLAY=:1
-
-CMD ["/usr/bin/Xorg", "-noreset", "+extension", "GLX", "+extension", "RANDR", "+extension", "RENDER", "-logfile", "./xdummy.log", "-config", "/etc/X11/xorg.conf", ":1"]
+CMD ["/usr/bin/Xorg", "-noreset", "+extension", "GLX", "+extension", "RANDR", "+extension", "RENDER", "-logfile", "./xdummy.log", "-config", "/etc/X11/xorg.conf"]
