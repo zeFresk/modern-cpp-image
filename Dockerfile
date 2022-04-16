@@ -11,6 +11,9 @@ RUN gem install --no-user-install asciidoctor asciidoctor-pdf
 COPY config ~/.config/sway/config
 ENV WLR_BACKENDS=headless
 ENV WLR_LIBINPUT_NO_DEVICES=1
+ENV WLR_RENDERER_ALLOW_SOFTWARE=1
+ENV XDG_RUNTIME_DIR=/tmp
+ENV XDG_SESSION_TYPE=wayland
 #COPY script.sh script.sh
 
 #CMD [ "./script.sh" ]
