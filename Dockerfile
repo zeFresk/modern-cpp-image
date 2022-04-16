@@ -9,4 +9,6 @@ RUN pacman -Syu --noconfirm clang afl llvm sdl2 wayland sway make cmake autoconf
 RUN gem install --no-user-install asciidoctor asciidoctor-pdf
 
 RUN swaymsg create_output
+RUN export SWAYSOCK=(ls /run/user/1000/sway-ipc.* | head -n 1)
 COPY config ~/.config/sway/config
+
