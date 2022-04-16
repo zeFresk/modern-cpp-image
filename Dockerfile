@@ -3,7 +3,7 @@
 FROM archlinux:base-devel
 
 # Compilation
-RUN pacman -Syu --noconfirm clang afl llvm sdl2 make cmake autoconf tree gcovr lcov gcc tree doxygen ruby python asciidoctor
+RUN pacman -Syu --noconfirm clang afl llvm sdl2 xorg make cmake autoconf tree gcovr lcov gcc tree doxygen ruby python asciidoctor
 #make clang build-base llvm-static llvm-dev clang-static clang-dev clang-extra-tools cmake autoconf ruby gcovr doxygen tree gcc afl sdl sdl-dev lld
 
 RUN gem install --no-user-install asciidoctor asciidoctor-pdf
