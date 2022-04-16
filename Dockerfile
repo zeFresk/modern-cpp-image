@@ -3,12 +3,14 @@
 FROM archlinux:base-devel
 
 # Compilation
-RUN pacman -Syu --noconfirm clang afl llvm sdl2 wayland sway make cmake autoconf tree gcovr lcov gcc tree doxygen ruby python asciidoctor
+RUN pacman -Syu --noconfirm clang afl llvm sdl2 wayland sway wayvnc make cmake autoconf tree gcovr lcov gcc tree doxygen ruby python asciidoctor
 #make clang build-base llvm-static llvm-dev clang-static clang-dev clang-extra-tools cmake autoconf ruby gcovr doxygen tre gcc afl sdl sdl-dev lld
 
 RUN gem install --no-user-install asciidoctor asciidoctor-pdf
 
-RUN swaymsg create_output
-RUN export SWAYSOCK=(ls /run/user/1000/sway-ipc.* | head -n 1)
 COPY config ~/.config/sway/config
+ENV WLR_BACKENDS=headless
+ENV WLR_LIBINPUT_NO_DEVICES=1
+COPY script.sh script.sh
 
+CMD [ "./script.sh" ]
