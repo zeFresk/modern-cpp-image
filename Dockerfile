@@ -7,3 +7,7 @@ RUN pacman -Syu --noconfirm clang afl llvm sdl2 xf86-video-dummy make cmake auto
 #make clang build-base llvm-static llvm-dev clang-static clang-dev clang-extra-tools cmake autoconf ruby gcovr doxygen tree gcc afl sdl sdl-dev lld
 
 RUN gem install --no-user-install asciidoctor asciidoctor-pdf
+
+RUN Xdummy -install
+
+CMD ["Xdummy", ":1"]
