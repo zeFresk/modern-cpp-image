@@ -14,6 +14,8 @@ ENV WLR_LIBINPUT_NO_DEVICES=1
 ENV WLR_RENDERER_ALLOW_SOFTWARE=1
 ENV XDG_RUNTIME_DIR=/tmp
 ENV XDG_SESSION_TYPE=wayland
+COPY sway.service /etc/systemd/user/sway.service
+COPY wayvnc.service /etc/systemd/user/wayvnc.service
 #RUN useradd gui
 #COPY script.sh script.sh
 

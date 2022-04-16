@@ -1,0 +1,10 @@
+[Unit]
+Description=wayvnc start
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/wayvnc 0.0.0.0
+
+[Install]
+WantedBy=sway-session.target
