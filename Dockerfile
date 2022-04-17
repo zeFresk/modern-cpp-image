@@ -3,7 +3,7 @@
 FROM archlinux:base-devel
 
 # Compilation
-RUN pacman -Syu --noconfirm clang llvm sdl2 xorg-server-xvfb make cmake autoconf tree gcc doxygen ruby python
+RUN pacman -Syu --noconfirm clang llvm sdl2 xorg-server-xvfb make cmake autoconf tree gcc doxygen ruby python python-pip
 #make clang build-base llvm-static llvm-dev clang-static clang-dev clang-extra-tools cmake autoconf ruby gcovr doxygen tre gcc afl sdl sdl-dev lld
 
 RUN pip install lcov_cobertura
