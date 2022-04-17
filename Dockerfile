@@ -3,20 +3,14 @@
 FROM archlinux:base-devel
 
 # Compilation
-RUN pacman -Syu --noconfirm clang afl llvm sdl2 wayland sway wayvnc make cmake autoconf tree gcovr lcov gcc tree doxygen ruby python asciidoctor
+RUN pacman -Syu --noconfirm clang afl llvm sdl2 xf86-video-dummy xorg-apps make cmake autoconf tree gcovr lcov gcc tree doxygen ruby python asciidoctor
 #make clang build-base llvm-static llvm-dev clang-static clang-dev clang-extra-tools cmake autoconf ruby gcovr doxygen tre gcc afl sdl sdl-dev lld
 
 RUN gem install --no-user-install asciidoctor asciidoctor-pdf
 
-COPY config ~/.config/sway/config
-ENV WLR_BACKENDS=headless
-ENV WLR_LIBINPUT_NO_DEVICES=1
-ENV WLR_RENDERER_ALLOW_SOFTWARE=1
-ENV XDG_RUNTIME_DIR=/tmp
-ENV XDG_SESSION_TYPE=wayland
-#COPY sway.service /etc/systemd/user/sway.service
-#COPY wayvnc.service /etc/systemd/user/wayvnc.service
-#RUN useradd gui
-#COPY script.sh script.sh
+COPY xorg.conf /etc/X11/xorg.conf
 
-#CMD [ "./script.sh" ]
+ENV DISPLAY=:1
+ENV XDG_RUNTIME_DIR=/tmp
+
+CMD ["/usr/bin/Xorg", "-noreset", "+extension", "GLX", "+extension", "RANDR", "+extension", "RENDER", "-logfile", "./xdummy.log", "-config", "/etc/X11/xorg.conf", ":1"]
